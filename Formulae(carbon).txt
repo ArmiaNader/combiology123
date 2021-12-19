@@ -1,0 +1,8 @@
+import pyopenms
+from pyopenms import *
+methl = EmpiricalFormula("CH3OH")
+water = EmpiricalFormula("H2O")
+ethl = EmpiricalFormula("CH2") + methl
+print("Ethanol chemical formula:", ethl.toString())
+print("Ethanol composition:", ethl.getElementalComposition())
+print("Ethanol has", ethl.getElementalComposition()[b"C"], "carbon atoms")

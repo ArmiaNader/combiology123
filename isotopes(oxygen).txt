@@ -1,0 +1,25 @@
+import pyopenms
+
+from pyopenms import *
+
+db = ElementDB()
+oxy_isoDist = {"mass": [], "abundance": []}
+
+
+oxy= db.getElement("O")
+
+isots = oxy.getIsotopeDistribution()
+
+for i in isots.getContainer():
+
+    print ("Oxygen isotope", i.getMZ(), "has abundance",i.getIntensity()*100, "%")
+
+    oxy_isoDist["mass"].append(i.getMZ())
+
+    oxy_isoDist["abundance"].append((i.getIntensity() * 100))
+
+
+
+
+
+

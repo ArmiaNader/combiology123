@@ -1,0 +1,5 @@
+import pyopenms
+from pyopenms import * 
+s = AASequence.fromString("DFPIANGER")
+s_formula = seq.getFormula()
+print("Peptide", s, "has molecular formula", s_formula)

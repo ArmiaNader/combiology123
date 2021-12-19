@@ -1,0 +1,25 @@
+import pyopenms
+from pyopenms import *
+methl = EmpiricalFormula("CH3OH")
+ethl = EmpiricalFormula("CH2") + methl
+
+methl_isoDist = {"mass": [], "abundance": []}
+ethl_isoDist = {"mass": [], "abundance": []}
+
+print(" Isotope Distribution:")
+isots = ethl.getIsotopeDistribution( CoarseIsotopePatternGenerator(4) )
+sum = sum([i.getIntensity() for i in isotopes.getContainer()])
+print("This covers", sum, "probability")
+for i in isots.getContainer():
+    print ("Isotope", i.getMZ(), "has abundance", i.getIntensity()*100, "%")
+    methl_isoDist["mass"].append(i.getMZ())
+    methl_isoDist["abundance"].append((i.getIntensity() * 100))
+
+print(" Isotope Distribution:")
+isots = ethl.getIsotopeDistribution( FineIsotopePatternGenerator(1e-3) )
+sum = sum([i.getIntensity() for iso in isots.getContainer()])
+print("This covers", sum, "probability")
+for i in isots.getContainer():
+    print ("Isotope", i.getMZ(), "has abundance", i.getIntensity()*100, "%")
+    ethl_isoDist["mass"].append(i.getMZ())
+    ethl_isoDist["abundance"].append((i.getIntensity() * 100))

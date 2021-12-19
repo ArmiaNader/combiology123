@@ -1,0 +1,21 @@
+import pyopenms
+from pyopenms import *
+    b = FASTAEntry() 
+    b.sequence = "MKWVTFISLLLLFSSAYSRGVFRRDTHKSEIAHRFKDLGE"
+    b.description = "BSA Bovine Albumin (partial sequence)"
+    b.identifier = "BSA"
+    a = FASTAEntry()
+    a.sequence = "MKWVTFISLLFLFSSAYSRGVFRRDAHKSEVAHRFKDLGE"
+    a.description = "ALB Human Albumin (partial sequence)"
+    a.identifier = "ALB"
+
+    entries = [bsa, alb]
+
+    f = FASTAFile()
+    f.store("example.fasta", entries)
+    entries = []
+    f = FASTAFile()
+    f.load("example.fasta", entries)
+    print( len(entries) )
+    for e in entries:
+    print (e.identifier, e.sequence)
