@@ -1,0 +1,7 @@
+import pyopenms
+from pyopenms import *
+s = AASequence.fromString("DFPIANGER")
+
+print(" peptide", str(s), "consists of amino acids:")
+for a in s:
+    print(a.getName(), ":", a.getMonoWeight())
